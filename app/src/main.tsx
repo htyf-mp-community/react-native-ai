@@ -1,5 +1,5 @@
 import { useContext, useRef, useCallback } from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, Platform } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Chat, Images, Settings, Assistant } from './screens'
 import { Header } from './components'
@@ -24,6 +24,8 @@ function MainComponent() {
           tabBarActiveTintColor: theme.tabBarActiveTintColor,
           tabBarInactiveTintColor: theme.tabBarInactiveTintColor,
           tabBarStyle: {
+            height: 50,
+            paddingBottom: Platform.OS === 'android' ? 20 : 0,
             borderTopWidth: 0,
             backgroundColor: theme.backgroundColor,
           },

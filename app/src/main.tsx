@@ -24,7 +24,6 @@ function MainComponent() {
           tabBarActiveTintColor: theme.tabBarActiveTintColor,
           tabBarInactiveTintColor: theme.tabBarInactiveTintColor,
           tabBarStyle: {
-            height: 50,
             paddingBottom: Platform.OS === 'android' ? 20 : 0,
             borderTopWidth: 0,
             backgroundColor: theme.backgroundColor,

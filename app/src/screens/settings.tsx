@@ -5,7 +5,8 @@ import {
   TouchableHighlight,
   ScrollView,
   Dimensions,
-  Image
+  Image,
+  Alert
 } from 'react-native'
 import { useContext } from 'react'
 import { AppContext, ThemeContext } from '../context'
@@ -20,6 +21,8 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome5'
 import { IIconProps } from '../../types'
 import { MODELS, IMAGE_MODELS, ILLUSION_DIFFUSION_IMAGES } from '../../constants'
 import * as themes from '../theme'
+import { setHost, useAppDispatch, useAppSelector } from '@/_UIHOOKS_'
+import { isValidUrl } from '@/utils'
 
 const { width } = Dimensions.get('window')
 const models = Object.values(MODELS)
@@ -31,6 +34,8 @@ const _themes = Object.values(themes).map(v => ({
 const diffusionImages = Object.values(ILLUSION_DIFFUSION_IMAGES)
 
 export function Settings() {
+  const dispath = useAppDispatch()
+  const apps = useAppSelector(i => i.apps)
   const { theme, setTheme, themeName } = useContext(ThemeContext)
   const {
     chatType,
@@ -81,6 +86,56 @@ export function Settings() {
       style={styles.container}
       contentContainerStyle={styles.contentContainer}
     >
+      <View
+        style={styles.titleContainer}
+      >
+        <Text
+            style={styles.mainText}
+        >ApiHost</Text>
+      </View>
+      <TouchableHighlight
+          underlayColor='transparent'
+          onPress={() => {
+            Alert.prompt(
+              "please enter api host",
+              "example: https://www.apps.com/api",
+              [
+                {
+                  text: "cancel",
+                  onPress: () => console.log("Cancel Pressed"),
+                  style: "cancel"
+                },
+                {
+                  text: "ok",
+                  onPress: url => {
+                    if (url && isValidUrl(url)) {
+                      dispath(setHost(url))
+                    } else {
+                      Alert.alert('Please enter the correct url')
+                    }
+                  }
+                }
+              ],
+              "plain-text"
+            );
+          }}
+        >
+          <View
+            style={{
+              ...styles.chatChoiceButton,
+              ...getDynamicViewStyle(themeName, themeName, theme)
+            }}
+          >
+          <Text
+            style={{
+              ...styles.chatTypeText,
+              ...getDynamicTextStyle(themeName, themeName, theme)
+            }}
+          >
+            Change ( {apps.__HOST__ || 'undefined'} )
+          </Text>
+        </View>
+      </TouchableHighlight>
       <View
         style={styles.titleContainer}
       >

@@ -13,17 +13,18 @@ import {
   ActivityIndicator
 } from 'react-native'
 import { ThemeContext } from '../context'
-import { DOMAIN } from '../../constants'
 import { useActionSheet } from '@expo/react-native-action-sheet'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import Markdown from '@ronradtke/react-native-markdown-display'
 import * as DocumentPicker from 'expo-document-picker'
 import * as Clipboard from 'expo-clipboard'
+import { useAppSelector } from '@/_UIHOOKS_'
 
 const { height } = Dimensions.get('window')
 
 export function Assistant() {
+  const apps = useAppSelector(i => i.apps)
   const [loading, setLoading] = useState(false)
   const scrollViewRef = useRef<ScrollView | null>(null)
   const [input, setInput] = useState<string>("")
@@ -118,7 +119,7 @@ export function Assistant() {
         for (const key in body) {
           formData.append(key, body[key])
         }
-        response = await fetch(`${DOMAIN}/chat/create-assistant`, {
+        response = await fetch(`${apps.__HOST__}/chat/create-assistant`, {
           method: 'POST',
           body: formData,
           headers: {
@@ -127,7 +128,7 @@ export function Assistant() {
         }).then(res => res.json())
         
       } else {
-        response = await fetch(`${DOMAIN}/chat/create-assistant`, {
+        response = await fetch(`${apps.__HOST__}/chat/create-assistant`, {
           method: 'POST',
           body: JSON.stringify(body),
           headers: {
@@ -153,7 +154,7 @@ export function Assistant() {
     try {
       let finished = false
       while (!finished) {
-        const response = await fetch(`${DOMAIN}/chat/run-status`, {
+        const response = await fetch(`${apps.__HOST__}/chat/run-status`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -171,7 +172,7 @@ export function Assistant() {
         }
       }
 
-      const thread = await fetch(`${DOMAIN}/chat/get-thread-messages`, {
+      const thread = await fetch(`${apps.__HOST__}/chat/get-thread-messages`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -246,7 +247,7 @@ export function Assistant() {
         for (const key in body) {
           formData.append(key, body[key])
         }
-        response = await fetch(`${DOMAIN}/chat/add-message-to-thread`, {
+        response = await fetch(`${apps.__HOST__}/chat/add-message-to-thread`, {
           method: 'POST',
           body: formData,
           headers: {
@@ -254,7 +255,7 @@ export function Assistant() {
           }
         }).then(res => res.json())
       } else {
-        response = await fetch(`${DOMAIN}/chat/add-message-to-thread`, {
+        response = await fetch(`${apps.__HOST__}/chat/add-message-to-thread`, {
           method: 'POST',
           body: JSON.stringify(body),
           headers: {

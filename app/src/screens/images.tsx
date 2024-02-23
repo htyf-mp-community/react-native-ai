@@ -12,7 +12,7 @@ import {
   Image
 } from 'react-native'
 import { useState, useRef, useContext } from 'react'
-import { DOMAIN, IMAGE_MODELS, ILLUSION_DIFFUSION_IMAGES } from '../../constants'
+import { IMAGE_MODELS, ILLUSION_DIFFUSION_IMAGES } from '../../constants'
 import { v4 as uuid } from 'uuid'
 import { ThemeContext, AppContext } from '../context'
 import Ionicons from 'react-native-vector-icons/Ionicons'
@@ -21,6 +21,7 @@ import { useActionSheet } from '@expo/react-native-action-sheet'
 import * as FileSystem from 'expo-file-system'
 import * as ImagePicker from 'expo-image-picker'
 import * as Clipboard from 'expo-clipboard'
+import { useAppSelector } from '@/_UIHOOKS_'
 
 const { width } = Dimensions.get('window')
 
@@ -30,6 +31,7 @@ type ImagesState = {
 }
 
 export function Images() {
+  const apps = useAppSelector(i => i.apps)
   const [callMade, setCallMade] = useState(false)
   const { theme } = useContext(ThemeContext)
   const styles = getStyles(theme)
@@ -107,7 +109,7 @@ export function Images() {
           formData.append(key, body[key])
         }
 
-        response = await fetch(`${DOMAIN}/images/fal`, {
+        response = await fetch(`${apps.__HOST__}/images/fal`, {
           method: 'POST',
           body: formData,
           headers: {
@@ -119,7 +121,7 @@ export function Images() {
           body.baseImage = ILLUSION_DIFFUSION_IMAGES[illusionImage].image
         }
 
-        response = await fetch(`${DOMAIN}/images/fal`, {
+        response = await fetch(`${apps.__HOST__}/images/fal`, {
           method: "POST",
           headers: {
             'Content-Type': 'application/json'

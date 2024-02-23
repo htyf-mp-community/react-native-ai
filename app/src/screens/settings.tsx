@@ -132,7 +132,7 @@ export function Settings() {
               ...getDynamicTextStyle(themeName, themeName, theme)
             }}
           >
-            Change ( {apps.__HOST__ || 'undefined'} )
+            Setting ( {apps.__HOST__ || 'undefined'} )
           </Text>
         </View>
       </TouchableHighlight>

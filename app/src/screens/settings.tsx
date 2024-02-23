@@ -21,7 +21,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome5'
 import { IIconProps } from '../../types'
 import { MODELS, IMAGE_MODELS, ILLUSION_DIFFUSION_IMAGES } from '../../constants'
 import * as themes from '../theme'
-import { setHost, useAppDispatch, useAppSelector } from '@/_UIHOOKS_'
+import { setHost, useAppDispatch, useAppSelector, useUI } from '@/_UIHOOKS_'
 import { isValidUrl } from '@/utils'
 
 const { width } = Dimensions.get('window')
@@ -34,6 +34,7 @@ const _themes = Object.values(themes).map(v => ({
 const diffusionImages = Object.values(ILLUSION_DIFFUSION_IMAGES)
 
 export function Settings() {
+  const uiHook = useUI();
   const dispath = useAppDispatch()
   const apps = useAppSelector(i => i.apps)
   const { theme, setTheme, themeName } = useContext(ThemeContext)
@@ -96,28 +97,7 @@ export function Settings() {
       <TouchableHighlight
           underlayColor='transparent'
           onPress={() => {
-            Alert.prompt(
-              "please enter api host",
-              "example: https://www.apps.com/api",
-              [
-                {
-                  text: "cancel",
-                  onPress: () => console.log("Cancel Pressed"),
-                  style: "cancel"
-                },
-                {
-                  text: "ok",
-                  onPress: url => {
-                    if (url && isValidUrl(url)) {
-                      dispath(setHost(url))
-                    } else {
-                      Alert.alert('Please enter the correct url')
-                    }
-                  }
-                }
-              ],
-              "plain-text"
-            );
+            uiHook.openUrlSetting();
           }}
         >
           <View

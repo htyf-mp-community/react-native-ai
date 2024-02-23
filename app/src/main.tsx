@@ -9,6 +9,7 @@ import {
   useSafeAreaInsets,
 } from 'react-native-safe-area-context'
 import { ThemeContext } from './context'
+import { StoreProvider, UIProvider } from './_UIHOOKS_';
 
 const Tab = createBottomTabNavigator()
 
@@ -94,7 +95,9 @@ function MainComponent() {
 export function Main() {
   return (
     <SafeAreaProvider>
-      <MainComponent />
+      <StoreProvider>
+          <UIProvider><MainComponent /></UIProvider>
+        </StoreProvider>
     </SafeAreaProvider>
   )
 }

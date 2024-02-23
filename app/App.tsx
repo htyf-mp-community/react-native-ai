@@ -33,15 +33,15 @@ export default function App() {
   const [modalVisible, setModalVisible] = useState<boolean>(false)
   const [illusionImage, setIllusionImage] = useState<string>(ILLUSION_DIFFUSION_IMAGES.mediumSquares.label)
   const [fontsLoaded] = useFonts({
-    'Geist-Regular': require('./assets/fonts/Geist-Regular.otf'),
-    'Geist-Light': require('./assets/fonts/Geist-Light.otf'),
-    'Geist-Bold': require('./assets/fonts/Geist-Bold.otf'),
-    'Geist-Medium': require('./assets/fonts/Geist-Medium.otf'),
-    'Geist-Black': require('./assets/fonts/Geist-Black.otf'),
-    'Geist-SemiBold': require('./assets/fonts/Geist-SemiBold.otf'),
-    'Geist-Thin': require('./assets/fonts/Geist-Thin.otf'),
-    'Geist-UltraLight': require('./assets/fonts/Geist-UltraLight.otf'),
-    'Geist-UltraBlack': require('./assets/fonts/Geist-UltraBlack.otf')
+    // 'Geist-Regular': require('./assets/fonts/Geist-Regular.otf'),
+    // 'Geist-Light': require('./assets/fonts/Geist-Light.otf'),
+    // 'Geist-Bold': require('./assets/fonts/Geist-Bold.otf'),
+    // 'Geist-Medium': require('./assets/fonts/Geist-Medium.otf'),
+    // 'Geist-Black': require('./assets/fonts/Geist-Black.otf'),
+    // 'Geist-SemiBold': require('./assets/fonts/Geist-SemiBold.otf'),
+    // 'Geist-Thin': require('./assets/fonts/Geist-Thin.otf'),
+    // 'Geist-UltraLight': require('./assets/fonts/Geist-UltraLight.otf'),
+    // 'Geist-UltraBlack': require('./assets/fonts/Geist-UltraBlack.otf')
   })
 
   useEffect(() => {
@@ -114,7 +114,7 @@ export default function App() {
           setTheme: _setTheme
           }}>
           <ActionSheetProvider>
-            <NavigationContainer>
+            <NavigationContainer independent>
               <Main />
             </NavigationContainer>
           </ActionSheetProvider>

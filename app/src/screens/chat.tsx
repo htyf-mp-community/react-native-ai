@@ -15,7 +15,7 @@ import { useContext, useState, useRef } from 'react'
 import { ThemeContext, AppContext } from '../context'
 import { getEventSource, getFirstN, getFirstNCharsOrLess, getChatType } from '../utils'
 import { v4 as uuid } from 'uuid'
-import Ionicons from '@expo/vector-icons/Ionicons'
+import Ionicons from 'react-native-vector-icons/Ionicons'
 import {
   IOpenAIMessages,
   IOpenAIStateWithIndex

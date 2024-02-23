@@ -16,7 +16,7 @@ import {
   MistralIcon,
   GeminiIcon
  } from '../components/index'
-import FontAwesome from '@expo/vector-icons/FontAwesome5'
+import FontAwesome from 'react-native-vector-icons/FontAwesome5'
 import { IIconProps } from '../../types'
 import { MODELS, IMAGE_MODELS, ILLUSION_DIFFUSION_IMAGES } from '../../constants'
 import * as themes from '../theme'

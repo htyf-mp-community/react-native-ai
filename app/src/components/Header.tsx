@@ -4,7 +4,7 @@ import {
 import { useContext } from 'react'
 import { Icon } from './Icon'
 import { ThemeContext, AppContext } from '../../src/context'
-import FontAwesome from '@expo/vector-icons/FontAwesome5'
+import FontAwesome from 'react-native-vector-icons/FontAwesome5'
 
 export function Header() {
   const { theme } = useContext(ThemeContext)
@@ -35,14 +35,16 @@ export function Header() {
 function getStyles(theme:any) {
   return StyleSheet.create({
     buttonContainer: {
-      position: 'absolute', right: 15,
+      position: 'absolute', 
+      right: 105 + 15,
       padding: 15
     },
     container: {
-      paddingVertical: 15,
+      paddingLeft: 15,
+      paddingVertical: 6,
       backgroundColor: theme.backgroundColor,
       justifyContent: 'center',
-      alignItems: 'center',
+      alignItems: 'flex-start',
       borderBottomWidth: 1,
       borderBottomColor: theme.borderColor
     }

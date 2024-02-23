@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import Pages from '../App';
+import App from '../App';
 import SplashScreen from 'react-native-splash-screen';
 import { useEffect } from 'react';
 
@@ -12,7 +12,7 @@ const MiniApp = forwardRef(({ dataSupper }: any) => {
   }, [])
   return (
     <>
-     <Pages />
+     <App />
     </>
   );
 });

@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Chat, Images, Settings, Assistant } from './screens'
 import { Header } from './components'
-import FeatherIcon from '@expo/vector-icons/Feather'
+import FeatherIcon from 'react-native-vector-icons/Feather'
 import {
   SafeAreaProvider,
   useSafeAreaInsets,

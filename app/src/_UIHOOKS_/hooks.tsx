@@ -34,6 +34,12 @@ export const UIProvider = (props: UIProviderProps) => {
     setIsClient(true)
   }, [])
 
+  useEffect(() => {
+    if (!apps.__HOST__) {
+      optionsSheetRef2.current?.snapToIndex(1)
+    }
+  }, [apps.__HOST__])
+
   return <UIContext.Provider
     value={{
       openUrlSetting: () => {

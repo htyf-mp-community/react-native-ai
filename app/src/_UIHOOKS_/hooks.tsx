@@ -6,6 +6,7 @@ import BottomSheet from '@gorhom/bottom-sheet';
 import CustomBackdrop from './components/CustomBackdrop';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { isValidUrl } from '@/utils';
+import { useDebounceEffect } from 'ahooks';
 
 
 const isDev = process.env.NODE_ENV !== 'production';
@@ -34,11 +35,17 @@ export const UIProvider = (props: UIProviderProps) => {
     setIsClient(true)
   }, [])
 
-  useEffect(() => {
-    if (!apps.__HOST__) {
-      optionsSheetRef2.current?.snapToIndex(1)
+  useDebounceEffect(() => {
+    try {
+      if (!apps.__HOST__) {
+        optionsSheetRef2.current?.snapToIndex(1)
+      }
+    } catch (error) {
+      
     }
-  }, [apps.__HOST__])
+  }, [apps.__HOST__], {
+    wait: 1000
+  })
 
   return <UIContext.Provider
     value={{

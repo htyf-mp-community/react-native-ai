@@ -1,13 +1,11 @@
 import React, { ReactNode, useCallback, useEffect, useMemo, useRef, useState,  } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, TextInput, SafeAreaView, Alert } from 'react-native'
-import { useImmer } from 'use-immer'
 import { setHost, useAppDispatch, useAppSelector } from './store';
 import BottomSheet from '@gorhom/bottom-sheet';
 import CustomBackdrop from './components/CustomBackdrop';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { isValidUrl } from '@/utils';
 import { useDebounceEffect } from 'ahooks';
-
 
 const isDev = process.env.NODE_ENV !== 'production';
 
@@ -64,73 +62,73 @@ export const UIProvider = (props: UIProviderProps) => {
       typeof props.children === 'function' ? props.children() : props?.children
     }
     <BottomSheet
-        index={-1}
-        backdropComponent={CustomBackdrop}
-        ref={optionsSheetRef2}
-        enablePanDownToClose={false}
-        snapPoints={optionsSheetSnapPoints2}
-        backgroundStyle={{
-          backgroundColor: '#fff'
-        }}
-        onChange={(index) => {
-          if (index < 1) {
-            
-          }
-        }}
-        onClose={() => {
-          setUrl('')
-        }}
-      >
-        <View style={[ModalizeMessageStyles.modalView]}>
-          <SafeAreaView>
-            <View style={[ModalizeMessageStyles.permissionsHeader]}>
-              <Text style={[ModalizeMessageStyles.text]}>please enter api host</Text>
+      index={-1}
+      backdropComponent={CustomBackdrop}
+      ref={optionsSheetRef2}
+      enablePanDownToClose={false}
+      snapPoints={optionsSheetSnapPoints2}
+      backgroundStyle={{
+        backgroundColor: '#fff'
+      }}
+      onChange={(index) => {
+        if (index < 1) {
+          
+        }
+      }}
+      onClose={() => {
+        setUrl('')
+      }}
+    >
+      <View style={[ModalizeMessageStyles.modalView]}>
+        <SafeAreaView>
+          <View style={[ModalizeMessageStyles.permissionsHeader]}>
+            <Text style={[ModalizeMessageStyles.text]}>please enter api host</Text>
+          </View>
+          <View style={[ModalizeMessageStyles.permissionsBody]}>
+            <View style={ModalizeMessageStyles.contentWrap}>
+              <TextInput placeholderTextColor={"#999"} value={url} onChangeText={i => setUrl(`${i}`)} style={ModalizeMessageStyles.inputWrap} placeholder='example: https://www.apps.com/api' />
             </View>
-            <View style={[ModalizeMessageStyles.permissionsBody]}>
-              <View style={ModalizeMessageStyles.contentWrap}>
-                <TextInput placeholderTextColor={"#999"} value={url} onChangeText={i => setUrl(`${i}`)} style={ModalizeMessageStyles.inputWrap} placeholder='example: https://www.apps.com/api' />
-              </View>
-              <View style={ModalizeMessageStyles.tipWrap}>
-                <Text style={ModalizeMessageStyles.tipText}>
-                  Please enter the correct url
-                </Text>
-              </View>
+            <View style={ModalizeMessageStyles.tipWrap}>
+              <Text style={ModalizeMessageStyles.tipText}>
+                Please enter the correct url
+              </Text>
             </View>
-            <View style={[ModalizeMessageStyles.permissionsFooter]}>
-              <TouchableOpacity
-                style={[ModalizeMessageStyles.btn]}
-                onPress={() => {
-                  setUrl('')
-                  optionsSheetRef2.current?.close()
-                }}>
-                <Text style={[ModalizeMessageStyles.btnText]}>取消</Text>
-              </TouchableOpacity>
-              <View style={[ModalizeMessageStyles.line]} />
-              <TouchableOpacity
-                style={[ModalizeMessageStyles.btn, ModalizeMessageStyles.onBtn]}
-                onPress={async () => {
-                  try {
-                    let _url = (url).replace(/\s/g, "")
-                    if (_url && isValidUrl(_url)) {
-                      setUrl('')
-                      dispath(setHost(_url))
-                      optionsSheetRef2.current?.close()
-                    } else {
-                      Alert.alert('Please enter the correct url')
-                    }
-                  } catch (error) {
-                    
-                  } finally {
-
+          </View>
+          <View style={[ModalizeMessageStyles.permissionsFooter]}>
+            <TouchableOpacity
+              style={[ModalizeMessageStyles.btn]}
+              onPress={() => {
+                setUrl('')
+                optionsSheetRef2.current?.close()
+              }}>
+              <Text style={[ModalizeMessageStyles.btnText]}>取消</Text>
+            </TouchableOpacity>
+            <View style={[ModalizeMessageStyles.line]} />
+            <TouchableOpacity
+              style={[ModalizeMessageStyles.btn, ModalizeMessageStyles.onBtn]}
+              onPress={async () => {
+                try {
+                  let _url = (url).replace(/\s/g, "")
+                  if (_url && isValidUrl(_url)) {
+                    setUrl('')
+                    dispath(setHost(_url))
+                    optionsSheetRef2.current?.close()
+                  } else {
+                    Alert.alert('Please enter the correct url')
                   }
-                }}
-              >
-                <Text style={[ModalizeMessageStyles.btnText, ModalizeMessageStyles.onBtnText]}>确定</Text>
-              </TouchableOpacity>
-            </View>
-          </SafeAreaView>
-        </View>
-      </BottomSheet>
+                } catch (error) {
+                  
+                } finally {
+
+                }
+              }}
+            >
+              <Text style={[ModalizeMessageStyles.btnText, ModalizeMessageStyles.onBtnText]}>确定</Text>
+            </TouchableOpacity>
+          </View>
+        </SafeAreaView>
+      </View>
+    </BottomSheet>
   </UIContext.Provider>
 }
 

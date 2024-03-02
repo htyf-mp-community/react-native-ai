@@ -110,7 +110,7 @@ export const UIProvider = (props: UIProviderProps) => {
                 style={[ModalizeMessageStyles.btn, ModalizeMessageStyles.onBtn]}
                 onPress={async () => {
                   try {
-                    let _url = (url || 'https://raw.gitmirror.com/htyf-mp-community/demo/main/apps.json').replace(/\s/g, "")
+                    let _url = (url).replace(/\s/g, "")
                     if (_url && isValidUrl(_url)) {
                       setUrl('')
                       dispath(setHost(_url))

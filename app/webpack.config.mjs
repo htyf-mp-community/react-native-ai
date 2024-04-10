@@ -180,7 +180,7 @@ export default (env) => {
        */
       rules: [
         {
-          test: /\.(js|jsx|ts|tsx|cjs)$/, 
+          test: /\.(js|jsx|ts|tsx|cjs|mjs)$/, 
           include: [
             /node_modules(.*[/\\])+react/,
             /node_modules(.*[/\\])+@react-native/,
@@ -238,7 +238,7 @@ export default (env) => {
           use: 'babel-loader',
         },
         {
-          test: /\.(js|jsx|ts|tsx|cjs)$/, 
+          test: /\.(js|jsx|ts|tsx|cjs|mjs)$/, 
           include: [
             /node_modules/,
           ],

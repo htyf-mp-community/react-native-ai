@@ -1,4 +1,12 @@
-import {AppRegistry} from 'react-native';
-import Pages from './src';
+import { AppRegistry } from 'react-native'
+import { name as appName } from './app.json'
+import { MiniAppsEnginesProvider } from '@htyf-mp/engines'
+import App from './src';
 
-AppRegistry.registerComponent('apps', () => Pages);
+const Root = () => {
+  return <MiniAppsEnginesProvider>
+    <App />
+  </MiniAppsEnginesProvider>
+}
+
+AppRegistry.registerComponent(appName, () => Root)

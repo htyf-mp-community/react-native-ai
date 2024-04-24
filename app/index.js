@@ -1,5 +1,4 @@
 import { AppRegistry } from 'react-native'
-import { name as appName } from './app.json'
 import { MiniAppsEnginesProvider } from '@htyf-mp/engines'
 import App from './src';
 
@@ -9,4 +8,4 @@ const Root = () => {
   </MiniAppsEnginesProvider>
 }
 
-AppRegistry.registerComponent(appName, () => Root)
+AppRegistry.registerComponent('apps', () => Root)

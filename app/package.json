@@ -33,7 +33,7 @@
     "@hongtangyun/react-native-mini-apps-engines": "0.15.34",
     "@hongtangyun/react-native-utils": "0.1.2",
     "@hromovp/react-native-static-server": "0.5.5",
-    "@htyf-mp/engines": "0.0.52",
+    "@htyf-mp/engines": "0.0.53",
     "@htyf-mp/js-sdk": "0.0.10",
     "@miblanchard/react-native-slider": "2.6.0",
     "@native-base/icons": "0.0.11",
@@ -202,7 +202,7 @@
     "react-native-config": "1.5.1",
     "react-native-date-picker": "5.0.2",
     "react-native-detector": "0.2.3",
-    "react-native-device-info": "10.13.1",
+    "react-native-device-info": "10.13.2",
     "react-native-document-picker": "9.1.2",
     "react-native-dotenv": "3.4.11",
     "react-native-draggable": "3.3.0",
@@ -268,7 +268,7 @@
     "react-native-url-polyfill": "2.0.0",
     "react-native-user-agent": "2.3.1",
     "react-native-vector-icons": "10.0.3",
-    "react-native-video": "6.0.0-beta.7",
+    "react-native-video": "v6.0.0-rc.0",
     "react-native-view-shot": "3.8.0",
     "react-native-vlc-media-player": "1.0.67",
     "react-native-volume-manager": "1.10.0",
@@ -303,7 +303,8 @@
     "webpack-bundle-analyzer": "4.10.2",
     "webpack-obfuscator": "3.5.1",
     "webpack-sources": "3.2.3",
-    "zustand": "4.5.2"
+    "zustand": "4.5.2",
+    "readable-stream": "4.5.2"
   },
   "devDependencies": {
     "@babel/core": "7.20.0",
@@ -496,7 +497,7 @@
     "react-native-config": "1.5.1",
     "react-native-date-picker": "5.0.2",
     "react-native-detector": "0.2.3",
-    "react-native-device-info": "10.13.1",
+    "react-native-device-info": "10.13.2",
     "react-native-document-picker": "9.1.2",
     "react-native-draggable": "3.3.0",
     "react-native-error-boundary": "1.2.4",
@@ -559,7 +560,7 @@
     "react-native-url-polyfill": "2.0.0",
     "react-native-user-agent": "2.3.1",
     "react-native-vector-icons": "10.0.3",
-    "react-native-video": "6.0.0-beta.7",
+    "react-native-video": "v6.0.0-rc.0",
     "react-native-view-shot": "3.8.0",
     "react-native-vlc-media-player": "1.0.67",
     "react-native-volume-manager": "1.10.0",
@@ -595,6 +596,7 @@
     "jpush-react-native": "3.0.6",
     "nanoid": "3.3.7",
     "jsonc-parser": "3.2.1",
-    "@ant-design/icons-react-native": "2.3.2"
+    "@ant-design/icons-react-native": "2.3.2",
+    "readable-stream": "4.5.2"
   }
 }
